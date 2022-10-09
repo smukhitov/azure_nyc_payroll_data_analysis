@@ -95,7 +95,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceHistData",
-				"sourceAzureSqlPayroll, sourceHistData union(byName: false)~> union1",
+				"sourceAzureSqlPayroll, sourceHistData union(byName: true)~> union1",
 				"union1 filter(toInteger(FiscalYear) >= $param_FiscalYear) ~> filter1",
 				"filter1 derive(TotalPaid = RegularGrossPaid + TotalOTPaid + TotalOtherPay) ~> TotalPaid",
 				"TotalPaid aggregate(groupBy(AgencyName,",
